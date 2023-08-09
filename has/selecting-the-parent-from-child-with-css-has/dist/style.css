@@ -1,0 +1,40 @@
+body {
+  font: 1em/1.618 sans-serif;
+}
+
+div:not(.content),
+main,
+section {
+  margin-bottom: 3em;
+}
+
+.content {
+  max-width: 650px;
+  font-size: 1.2em;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+
+.child {
+  padding: 1em;
+  color: orange;
+  border: 2px solid orange;
+  border-radius: 0.5em;
+}
+
+@supports (selector(html:has(body))) {
+  *:has(> .child):before {
+    display: block;
+    content: "A parent of `.child`.";
+    font-size: 0.75em;
+    color: red;
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}
