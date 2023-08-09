@@ -1,0 +1,55 @@
+body {
+  background-color: #dde;
+  font: 1em/1.618 sans-serif;
+}
+
+p {
+  margin: 0;
+}
+p:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.card-grid {
+  padding: 1em;
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+.card {
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: #fff;
+  min-height: 150px;
+  box-shadow: 0 0 0.75em 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.25s ease-in-out;
+}
+
+@supports (selector(html:has(body))) {
+  .card:has(*):hover {
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.25);
+  }
+  .card:not(:has(*)) {
+    user-select: none;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card:not(:has(*)):before {
+    content: "Coming soon";
+    color: #888;
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

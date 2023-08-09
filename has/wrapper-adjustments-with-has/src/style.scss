@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Flow+Block&display=swap");
+
+body {
+  font-family: "Flow Block";
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.masthead {
+  line-height: 1;
+  padding: 1em 2em;
+  background-color: #fcf;
+}
+
+.masthead-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.masthead-inner {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1em;
+  li {
+    display: block;
+    margin: 0;
+  }
+}
+
+.masthead + .masthead {
+  margin-top: calc(50vh - 3em);
+}
+
+@supports (selector(html:has(body))) {
+  .masthead:not(:has(.masthead-inner)) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

@@ -1,0 +1,61 @@
+:root {
+  font-size: 112.5%;
+}
+
+body {
+  padding: 4em;
+  margin: 0 auto;
+  max-width: 60ch;
+  font: 1em/1.618 sans-serif;
+  color: #444;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.3;
+  margin: 1.5em 0 1.5rem;
+  color: #111;
+}
+
+pre,
+figure,
+blockquote {
+  margin: 3em 0;
+}
+
+figcaption {
+  margin-top: 1em;
+  font-size: 0.75em;
+  color: #888;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+p:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+@supports (selector(html:has(body))) {
+  h2:has(+ figure, + code, + blockquote) {
+    margin-bottom: -1.5rem;
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

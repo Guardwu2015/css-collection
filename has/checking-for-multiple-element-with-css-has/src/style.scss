@@ -1,0 +1,34 @@
+body {
+  font: 1em/1.618 sans-serif;
+}
+
+.content {
+  padding: 2em;
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+@supports (selector(html:has(body))) {
+  .content {
+    &:has(p, h2, h3) {
+      &:before {
+        display: block;
+        content: "Contains `p`, `h2`, or `h3` tags.";
+        padding: 1em;
+        color: darkgreen;
+        background: lightgreen;
+        border: 2px solid green;
+        border-radius: 0.5em;
+        margin-bottom: 1.5em;
+      }
+    }
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

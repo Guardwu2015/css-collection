@@ -1,0 +1,99 @@
+:root {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: rgba(0, 184, 148, 0.1);
+}
+
+.content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscription-form {
+  padding: 1.5em;
+  color: #00b894;
+  border: 2px dashed #00b894;
+  border-radius: 1em;
+  max-width: 300px;
+}
+.subscription-form:after {
+  display: block;
+  margin-top: 1em;
+  font-size: 0.75em;
+  content: "* Email field is required";
+}
+.subscription-form h3 {
+  margin: 0 0 1em;
+  font-weight: bold;
+}
+.subscription-form input,
+.subscription-form button {
+  padding: 0.75em;
+  border: 1px solid;
+  display: block;
+  width: 100%;
+  border-radius: 0.5em;
+}
+.subscription-form input:focus,
+.subscription-form button:focus {
+  outline-color: currentColor;
+}
+.subscription-form input + button {
+  margin-top: 0.5em;
+}
+.subscription-form input {
+  border-color: #00b894;
+  color: #00b894;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.subscription-form input::placeholder {
+  color: rgba(225, 112, 85, 0.75);
+}
+.subscription-form button {
+  cursor: pointer;
+  background-color: #00b894;
+  border-color: #00b894;
+  color: white;
+}
+
+@supports (selector(html:has(body))) {
+  .subscription-form:has(.user-email:invalid) {
+    border-color: #e17055;
+    color: #e17055;
+  }
+  .subscription-form:has(.user-email:invalid) input {
+    border-color: #e17055;
+    color: #e17055;
+  }
+  .subscription-form:has(.user-email:invalid) button {
+    background-color: #e17055;
+    border-color: #e17055;
+  }
+  .subscription-form:has(.user-email:invalid):after {
+    content: "* You haven't provided an email yet.";
+  }
+
+  .subscription-form:has(.user-email:valid):after {
+    content: "* You're good to go!";
+  }
+
+  body:has(.subscription-form:has(.user-email:invalid)) {
+    background-color: rgba(225, 112, 85, 0.1);
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

@@ -1,0 +1,107 @@
+:root {
+  box-sizing: border-box;
+}
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  background-color: rgba(#00b894, 0.1);
+}
+.content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscription-form {
+  padding: 1.5em;
+  color: #00b894;
+  border: 2px dashed #00b894;
+  border-radius: 1em;
+  max-width: 300px;
+  &:after {
+    display: block;
+    margin-top: 1em;
+    font-size: 0.75em;
+    content: "* Email field is required";
+  }
+  h3 {
+    margin: 0 0 1em;
+    font-weight: bold;
+  }
+
+  input,
+  button {
+    padding: 0.75em;
+    border: 1px solid;
+    display: block;
+    width: 100%;
+    border-radius: 0.5em;
+    &:focus {
+      outline-color: currentColor;
+    }
+  }
+
+  input + button {
+    margin-top: 0.5em;
+  }
+
+  input {
+    border-color: #00b894;
+    color: #00b894;
+    background-color: rgba(white, 0.25);
+    &::placeholder {
+      color: rgba(#e17055, 0.75);
+    }
+  }
+
+  button {
+    cursor: pointer;
+    background-color: #00b894;
+    border-color: #00b894;
+    color: white;
+  }
+}
+
+@supports (selector(html:has(body))) {
+  .subscription-form:has(.user-email:invalid) {
+    border-color: #e17055;
+    color: #e17055;
+    input {
+      border-color: #e17055;
+      color: #e17055;
+    }
+    button {
+      background-color: #e17055;
+      border-color: #e17055;
+    }
+    &:after {
+      content: "* You haven't provided an email yet.";
+    }
+  }
+
+  .subscription-form:has(.user-email:valid) {
+    &:after {
+      content: "* You're good to go!";
+    }
+  }
+
+  body:has(.subscription-form:has(.user-email:invalid)) {
+    background-color: rgba(#e17055, 0.1);
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

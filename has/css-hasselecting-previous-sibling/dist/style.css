@@ -1,0 +1,18 @@
+.content {
+  max-width: 600px;
+  padding: 2em;
+}
+
+@supports (selector(html:has(body))) {
+  *:has(+ .select-my-previous-sibling) {
+    color: green;
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

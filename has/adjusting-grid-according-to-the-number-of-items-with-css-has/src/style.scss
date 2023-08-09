@@ -1,0 +1,54 @@
+:root {
+  --card-cols: 2;
+  --card-height: 150px;
+}
+
+body {
+  font-family: "Flow Block";
+  padding: 2em;
+  background-color: #ddd;
+}
+
+h3 {
+  font-weight: bold;
+  margin: 0 0 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.content {
+  max-width: 960px;
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--card-cols), 1fr);
+  gap: 1em;
+  margin-bottom: 3em;
+}
+
+.card {
+  min-height: var(--card-height);
+  background-color: #fff;
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em 0 rgba(black, 0.1);
+}
+
+@supports (selector(html:has(body))) {
+  .card-grid:has(.card:nth-last-child(n + 3)) {
+    --card-cols: 3;
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}

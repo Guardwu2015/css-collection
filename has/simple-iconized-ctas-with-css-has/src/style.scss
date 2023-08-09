@@ -1,0 +1,60 @@
+svg {
+  max-width: 100%;
+}
+
+hr {
+  margin: 3em auto;
+}
+
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 1em;
+  line-height: 1;
+  display: inline-flex;
+  background-color: #07c;
+  color: lighten(#07c, 50%);
+  border-radius: .25em;
+  
+ 
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #04c;
+  }
+}
+
+.btn-icon {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+
+.btn-icon + .btn-label,
+.btn-label + .btn-icon {
+  margin-left: .5em;
+}
+
+@supports (selector(html:has(body))) {
+  .btn:has(.btn-icon) {
+    border-radius: 2em;
+    padding: 1em 1.5em;
+  }
+}
+
+
+@supports not (selector(html:has(body))) {
+  body {
+    &:before {
+      padding: 1em;
+      color: red;
+      display: block;
+      content: "Your browser doesn't support the `:has()` pseudo-class yet."
+    }
+  }
+}

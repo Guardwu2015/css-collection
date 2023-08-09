@@ -1,0 +1,47 @@
+body {
+  background-color: #ddd;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.figure-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  margin-top: 1em;
+  font-size: 0.75em;
+  color: #666;
+  text-align: center;
+}
+
+@supports (selector(html:has(body))) {
+  figure:has(figcaption:not(:empty)) {
+    padding: 1em;
+    background-color: white;
+    border-radius: 0.5em;
+    img {
+      border-radius: 0.25em;
+    }
+  }
+}
+@supports not (selector(html:has(body))) {
+  body:before {
+    padding: 1em;
+    color: red;
+    display: block;
+    content: "Your browser doesn't support the `:has()` pseudo-class yet.";
+  }
+}
