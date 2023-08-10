@@ -1,0 +1,40 @@
+@property --p {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: false;
+}
+
+img {
+  --b: 10px; /* border thickness */
+  --g: 8px;  /* the gap */ 
+  
+  width: 250px;
+  aspect-ratio: 1;
+  border: var(--b) solid #0000;
+  padding: var(--g);
+  border-radius: 50%;
+  background: 
+    repeating-conic-gradient(#F7E4BE 0 9deg,#7A6A53 10deg 18deg) /* the border coloration */
+    border-box;
+  --m:linear-gradient(#000 0 0);
+  -webkit-mask: 
+    var(--m),var(--m) padding-box,
+    conic-gradient(#000 var(--p, 0%),#0000 0) content-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  transition: --p .5s;
+  cursor: pointer;
+}
+img:hover {
+  --p: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-auto-flow: column;
+  place-content: center;
+  gap: 50px;
+  background: #b8b8b8;
+}

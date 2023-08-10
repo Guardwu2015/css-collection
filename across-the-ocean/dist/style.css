@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.ocean {
+  background-image: linear-gradient(36deg, #ffffff 2.55%, #3D6F8E 0, #3D6F8E 53%, #ffffff 47%, #ffffff 44.55%, #3D6F8E 54.55%, #3D6F8E 100%);
+  background-size: 37.43px 27.19px;
+  width: 1000%;
+  height: 1000vh;
+  animation: 175s ease travel infinite alternate;
+}
+
+.wrap {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.ship {
+  width: 60px;
+  height: 17px;
+  background: white;
+  border-radius: 40%;
+  margin: auto;
+}
+
+@keyframes travel {
+  0% {
+    background-position: 0%, 0%;
+  }
+  100% {
+    background-position: 90%, 0%;
+  }
+}
