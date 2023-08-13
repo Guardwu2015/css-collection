@@ -13,29 +13,30 @@ import { render } from 'https://cdn.skypack.dev/react-dom';
 const ROOT_NODE = document.querySelector('#app');
 
 const getCode = (x, y) => {
-  let RESULT = ``;
-  RESULT += `.box {
-  animation: enter 2s;
-}
+  const result = `
+    .box {
+      animation: enter 2s;
+    }
+
+    .box:first-of-type {
+      --x: ${x}%;
+      --y: ${y}%;
+    }
+
+    .box:last-of-type {
+      --x: 0%;
+      --y: 200%;
+    }
+    
+    @keyframes enter {
+      0% {
+        opacity: 0;
+        translate: var(--x, 0) var(--y, 0);
+      }
+    }
   `;
-  RESULT += `
-.box:first-of-type {\n`;
-  RESULT += `  --x: ${x}%;\n`;
-  RESULT += `  --y: ${y}%;\n`;
-  RESULT += '}\n';
-  RESULT += `
-.box:last-of-type {\n`;
-  RESULT += `  --x: 0%;\n`;
-  RESULT += `  --y: 200%;\n`;
-  RESULT += '}\n\n';
 
-  RESULT += `@keyframes enter {\n`;
-  RESULT += `  0% {
-    opacity: 0;
-    translate: var(--x, 0) var(--y, 0);
-  }\n`;
-
-  return RESULT += '}';
+  return result;
 };
 
 const getCodeMarkup = code => {
