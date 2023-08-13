@@ -1,0 +1,34 @@
+body
+  min-height 100vh
+  display flex
+  align-items center
+  justify-content center
+  
+  
+.button
+  padding 1rem 1.25rem
+  color white
+  font-weight bold
+  font-size 1.25rem
+  margin 1rem
+  transition background .1s ease
+  
+  &--primary
+    background hsl(233, 100%, 50%)
+    outline-color hsl(233, 100%, 80%)
+    
+    &:hover
+      background hsl(233, 100%, 40%)
+      
+    &:active
+      background hsl(233, 100%, 30%)
+    
+  &--secondary
+    background hsl(200, 100%, 50%)
+    outline-color hsl(200, 100%, 80%)
+    
+    &:hover
+      background hsl(200, 100%, 40%)
+      
+    &:active
+      background hsl(200, 100%, 30%)

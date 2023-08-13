@@ -1,0 +1,30 @@
+body
+  align-items center
+  background #111
+  display flex
+  justify-content center
+  min-height 100vh
+  overflow hidden
+
+.bubble
+  --bubble-outline 'hsl(%s, 100%, 50%)' % var(--hue)
+  --bubble-spot 'hsl(%s, 100%, 75%)' % var(--hue)
+  --bubble-shade 'hsl(%s, 100%, 70%)' % var(--hue)
+  animation float 5s infinite ease-in-out
+  background radial-gradient(100% 115% at 25% 25%, #fff, transparent 33%), radial-gradient(15% 15% at 75% 75%, var(--bubble-spot), transparent), radial-gradient(100% 100% at 50% 25%, transparent, var(--bubble-shade) 98%)
+  border 1px solid var(--bubble-outline)
+  border-radius 100%
+  height calc(var(--size) * 1px)
+  left calc(var(--x) * 1%)
+  position absolute
+  top 100%
+  width calc(var(--size) * 1px)
+  
+@keyframes float
+  from
+    opacity 1
+    transform translate(-50%, 0) scale(0)
+  to
+    opacity 0
+    transform translate(-50%, -100vh) scale(1)
+    

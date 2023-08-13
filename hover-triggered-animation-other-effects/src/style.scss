@@ -1,0 +1,15 @@
+div {
+	--_b: var(--b, 0);
+	width: 7.5em;
+	aspect-ratio: 1;
+	scale: calc(1 + .25*var(--_b));
+	background: color-mix(in hsl, hotpink calc(var(--_b)*100%), darkorange);
+	transition: scale .5s cubic-bezier(.32, 1.75, .68, 1), 
+							background-color .65s  ease-out;
+	animation: r 4s linear infinite;
+	animation-play-state: var(--b, paused);
+	
+	&:hover { --b: 1 }
+}
+
+@keyframes r { to { rotate: 1turn } }

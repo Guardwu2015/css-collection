@@ -1,0 +1,75 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.25rem;
+  transition: background 0.1s ease;
+  background: hsl(var(--hue), 100%, 50%);
+  outline-color: hsl(var(--hue), 100%, 80%);
+  -webkit-animation: flow 2s infinite ease-in-out;
+          animation: flow 2s infinite ease-in-out;
+}
+.button:hover {
+  background: hsl(var(--hue), 100%, 40%);
+}
+.button:active {
+  background: hsl(var(--hue), 100%, 30%);
+}
+.button__wrap {
+  position: relative;
+}
+.button__shadow {
+  position: absolute;
+  border-radius: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #ddd5d5;
+  -webkit-animation: shadow 2s infinite ease-in-out;
+          animation: shadow 2s infinite ease-in-out;
+  z-index: -1;
+}
+@-webkit-keyframes shadow {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+    transform: scaleX(0.25);
+  }
+}
+@keyframes shadow {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+    transform: scaleX(0.25);
+  }
+}
+@-webkit-keyframes flow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -25%);
+  }
+}
+@keyframes flow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -25%);
+  }
+}

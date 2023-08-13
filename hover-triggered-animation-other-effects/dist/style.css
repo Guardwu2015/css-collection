@@ -1,0 +1,27 @@
+div {
+  --_b: var(--b, 0);
+  width: 7.5em;
+  aspect-ratio: 1;
+  scale: calc(1 + .25*var(--_b));
+  background: color-mix(in hsl, hotpink calc(var(--_b)*100%), darkorange);
+  transition: scale 0.5s cubic-bezier(0.32, 1.75, 0.68, 1), background-color 0.65s ease-out;
+  -webkit-animation: r 4s linear infinite;
+          animation: r 4s linear infinite;
+  -webkit-animation-play-state: var(--b, paused);
+          animation-play-state: var(--b, paused);
+}
+div:hover {
+  --b: 1 ;
+}
+
+@-webkit-keyframes r {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@keyframes r {
+  to {
+    rotate: 1turn;
+  }
+}
